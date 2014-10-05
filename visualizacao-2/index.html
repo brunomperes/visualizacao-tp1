@@ -24,7 +24,16 @@ rect.background {
   stroke-width: .5px;
 }
 
+#vis-1 {
+  padding: 10px 15px;
+}
+button.dropdown-toggle {
+  padding: 10px 10px;
+}
+
     </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   </head>
@@ -32,7 +41,20 @@ rect.background {
     <div class="container with-3d-shadow with-transitions">
     <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li><a href="../visualizacao-1/">Visualização 1</a></li>
+          <li>
+            <li class="active">
+                <div class="btn-group">
+                  <a href="../visualizacao-1/" id="vis-1" type="button" class="btn btn-default">Visualização 1</a>
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a id="completo" href="../visualizacao-1/#completo">Completo</a></li>
+                    <li><a id="simplificado" href="../visualizacao-1/#simplificado">Simplificado</a></li>
+                  </ul>
+                </div>
+              </li>
           <li class="active"><a href="../2/">Visualização 2</a></li>
         </ul>
         <h3 class="text-muted">Visualização de Dados</h3>

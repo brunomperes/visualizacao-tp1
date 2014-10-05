@@ -53,7 +53,6 @@ function dictKeyOfValue(arr, value) {
 *       - artista
 *           - album
  */
-var listaAlbums = [];
 var listaArtistas = [];
 d3.json("artists.json", function(jsonArtistas) {
 
