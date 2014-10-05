@@ -1,4 +1,4 @@
-var m = [80, 160, 0, 160], // top right bottom left
+var m = [40, 160, 0, 220], // top right bottom left
     w = 1280 - m[1] - m[3], // width
     h = 800 - m[0] - m[2], // height
     x = d3.scale.linear().range([0, w]),
@@ -32,6 +32,18 @@ svg.append("svg:g")
   .append("svg:line")
     .attr("y1", "100%");
 
+
+function texto(d) {
+  switch (d.depth){
+    case 0:
+      return 'Lista de ' + d.name;
+    case 1:
+      return 'Gênero: ' + d.name;
+    case 2:
+      return 'Gênero: ' + d.parent.name + ' > Artista: ' +  d.name;
+  }
+}
+
 /*
  * Busca uma chave, se não encontrar a cria
  */
@@ -64,7 +76,7 @@ d3.json("artists.json", function(jsonArtistas) {
   d3.json("albums.json", function(jsonAlbuns) {
 
     var data = {};
-    data.name = "visualização1";
+    data.name = "Gêneros";
     data.children = [];
     for (var i = jsonAlbuns.length - 1; i >= 0; i--) {
       
@@ -87,6 +99,9 @@ d3.json("artists.json", function(jsonArtistas) {
 
 function down(d, i) {
   if (!d.children || this.__transition__) return;
+
+  $('#texto-hierarquia').text(texto(d));
+
   var duration = d3.event && d3.event.altKey ? 7500 : 750,
       delay = duration / d.children.length;
 
@@ -145,6 +160,7 @@ function down(d, i) {
 
 function up(d) {
   if (!d.parent || this.__transition__) return;
+  $('#texto-hierarquia').text(texto(d.parent));
   var duration = d3.event && d3.event.altKey ? 7500 : 750,
       delay = duration / d.children.length;
 
