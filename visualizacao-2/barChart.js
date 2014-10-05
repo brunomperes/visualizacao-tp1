@@ -38,9 +38,9 @@ function texto(d) {
     case 0:
       return 'Lista de ' + d.name;
     case 1:
-      return 'Gênero: ' + d.name;
+      return 'Artistas do Gênero: ' + d.name;
     case 2:
-      return 'Gênero: ' + d.parent.name + ' > Artista: ' +  d.name;
+      return 'Gênero: ' + d.parent.name + ' > Álbuns do Artista: ' +  d.name;
   }
 }
 
