@@ -12,6 +12,8 @@ $(document).ready(function () {
 function plotaGrafico (nomeArquivo) {
   d3.json(nomeArquivo, function(data) {
 
+    d3.selectAll("svg > *").remove();
+
     nv.addGraph(function() {
       var chart = nv.models.stackedAreaChart()
                     .margin({right: 100})
